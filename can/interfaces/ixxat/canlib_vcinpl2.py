@@ -931,6 +931,7 @@ class IXXATBus(BusABC):
 
         else:
             _canlib.canChannelPostMessage(self._channel_handle, message)
+            time.sleep(500e-6)
 
     def _send_periodic_internal(
         self,
