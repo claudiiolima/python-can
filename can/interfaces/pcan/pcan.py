@@ -662,6 +662,7 @@ class PcanBus(BusABC):
             raise PcanCanOperationError(
                 "Failed to send: " + self._get_formatted_error(result)
             )
+        time.sleep(500e-6)
 
     def flash(self, flash):
         """
