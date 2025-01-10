@@ -874,6 +874,7 @@ class VectorBus(BusABC):
         self.xldriver.xlCanTransmit(
             self.port_handle, mask, message_count, xl_event_array
         )
+        time.sleep(500e-6)
         return message_count.value
 
     @staticmethod
@@ -908,6 +909,7 @@ class VectorBus(BusABC):
         self.xldriver.xlCanTransmitEx(
             self.port_handle, mask, message_count, msg_count_sent, xl_can_tx_event_array
         )
+        time.sleep(500e-6)
         return msg_count_sent.value
 
     @staticmethod
