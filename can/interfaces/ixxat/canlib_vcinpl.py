@@ -10,6 +10,7 @@ TODO: We could implement this interface such that setting other filters
 """
 
 import ctypes
+import time
 import functools
 import logging
 import sys
@@ -785,6 +786,7 @@ class IXXATBus(BusABC):
             )
         else:
             _canlib.canChannelPostMessage(self._channel_handle, message)
+            time.sleep(500e-6)
         # Want to log outgoing messages?
         # log.log(self.RECV_LOGGING_LEVEL, "Sent: %s", message)
 
