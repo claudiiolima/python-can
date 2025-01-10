@@ -3,6 +3,7 @@ This interface is for Windows only, otherwise use SocketCAN.
 """
 
 import logging
+import time
 from ctypes import byref
 from typing import Optional, Union
 
@@ -163,6 +164,7 @@ class Usb2canBus(BusABC):
             status = self.can.blocking_send(self.handle, byref(tx), int(timeout * 1000))
         else:
             status = self.can.send(self.handle, byref(tx))
+            time.sleep(500e-6)
 
         if status != CanalError.SUCCESS:
             raise CanOperationError("could not send message", error_code=status)
